@@ -10,6 +10,15 @@ beforeAll(async () => {
 });
 
 describe('Base layout', () => {
+  it('loads the review gate in <head> before the page renders, and the overlay', async () => {
+    const html = await container.renderToString(Base, { props: { title: 'T', description: 'D' } });
+    const head = html.slice(0, html.indexOf('</head>'));
+    expect(head).toContain('window.DKM_REVIEW=');
+    expect(head).toMatch(/<script src="\/review\/gate\.js"><\/script>/);
+    expect(head.indexOf('window.DKM_REVIEW=')).toBeLessThan(head.indexOf('/review/gate.js'));
+    expect(html).toMatch(/<script src="\/review\/overlay\.js" defer><\/script>/);
+  });
+
   it('is hidden from search engines', async () => {
     const html = await container.renderToString(Base, { props: { title: 'T', description: 'D' } });
     expect(html).toContain('<meta name="robots" content="noindex, nofollow">');

@@ -24,6 +24,14 @@ Domains (`pasadenaworks.com`; `dkm` CNAME → `thirstypig.github.io`).
 - **Hidden from search engines** until Donyell approves: noindex meta on every
   page + `robots.txt` disallow-all + no sitemap. To launch, remove all three
   deliberately (tests will need updating — that is the point).
+- **Review gate + feedback overlay** (pre-launch only): `public/review/`
+  (gate.js, overlay.js), config in `src/data/review.ts` (salted hash, Worker
+  URL), loaded from `src/layouts/Base.astro`. Comments live in the
+  `dkm-review` Cloudflare Worker (`worker/`, KV `dkm-review-COMMENTS`, CORS
+  locked to dkm.pasadenaworks.com, threads = the five page names). The gate is
+  NOT security — the hash ships in public JS. Deploy the Worker with
+  `cd worker && npx wrangler@4 deploy`; test with `cd worker && npm test`.
+  **At launch remove the gate, overlay, and Worker** along with noindex.
 - Photos: only Donyell, only from `src/assets/photos/`. No children, other
   talent, or third-party images.
 - Copy in American English.

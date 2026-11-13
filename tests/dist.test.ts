@@ -34,6 +34,15 @@ describe.skipIf(!existsSync(DIST))('built site', () => {
     }
   });
 
+  it('every page is password-gated and ships the review scripts', () => {
+    for (const p of pages) {
+      const html = readFileSync(p, 'utf8');
+      expect(html, p).toContain('<script src="/review/gate.js"></script>');
+      expect(html, p).toContain('/review/overlay.js');
+    }
+    for (const f of ['gate.js', 'overlay.js']) expect(existsSync(join(DIST, 'review', f)), f).toBe(true);
+  });
+
   it('robots.txt disallows everything', () => {
     expect(readFileSync(join(DIST, 'robots.txt'), 'utf8')).toBe('User-agent: *\nDisallow: /\n');
   });

@@ -9,6 +9,6 @@ import { configDefaults } from 'vitest/config';
 // would otherwise be collected and run twice (see pasadenaworks, 2026-09-11).
 export default getViteConfig({
   test: {
-    exclude: [...configDefaults.exclude, '.claude/**', '.superpowers/**'],
+    exclude: [...configDefaults.exclude, '.claude/**', '.superpowers/**', 'worker/**'],
   },
 });

@@ -10,6 +10,7 @@ import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import type { NavKey } from '../data/site';
+import { review } from '../data/review';
 
 interface Props {
   title: string;
@@ -31,6 +32,10 @@ const fullTitle = current === 'home' ? title : `${title} · DKM`;
     <title>{fullTitle}</title>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <meta name="theme-color" content="#FAF8F3" />
+    <!-- Pre-launch review: password gate + feedback overlay. Remove at launch. -->
+    <script is:inline set:html={`window.DKM_REVIEW=${JSON.stringify(review)};`}></script>
+    <script is:inline src="/review/gate.js"></script>
+    <script is:inline src="/review/overlay.js" defer></script>
   </head>
   <body>
     <a class="skip" href="#main">Skip to content</a>

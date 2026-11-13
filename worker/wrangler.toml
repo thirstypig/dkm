@@ -1,0 +1,12 @@
+name = "dkm-review"
+main = "src/index.js"
+compatibility_date = "2026-09-01"
+
+[vars]
+# Only the DKM preview may call this Worker from a browser.
+ALLOWED_ORIGINS = "https://dkm.pasadenaworks.com"
+
+# Dedicated namespace for DKM review comments; never share it with another project.
+[[kv_namespaces]]
+binding = "COMMENTS"
+id = "1bd8fa18f04044219fa49316410f837f"  # dkm-review-COMMENTS
