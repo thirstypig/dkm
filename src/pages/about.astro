@@ -1,0 +1,51 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { site } from '../data/site';
+import portrait from '../assets/photos/02-bookshelf-portrait.jpg';
+
+const career = [
+  { yr: '2022 – 2025', co: 'REVOLT Media & TV', role: 'SVP, Talent Relations and Casting' },
+  { yr: '2015 – 2022', co: 'TV One', role: 'Head of Talent and Casting' },
+  { yr: '2014', co: 'Telepictures', role: 'Talent Executive, Just Keke' },
+  { yr: '2009 – 2014', co: 'BET Networks', role: 'Talent Executive / Talent Booker, non-scripted' },
+];
+---
+<Base
+  title="About"
+  description="Donyell Kennedy-McCullough: more than fifteen years on the talent side of television at REVOLT, TV One, BET, and Telepictures."
+  current="about"
+>
+  <section class="split">
+    <div class="img">
+      <Image src={portrait} widths={[480, 800, 1200]} sizes="(max-width: 820px) 100vw, 50vw" alt="Donyell Kennedy-McCullough in front of a bookshelf" style="object-position:center 25%" loading="eager" />
+    </div>
+    <div class="txt">
+      <p class="eyebrow">About</p>
+      <h1 class="h-display h1">{site.name}</h1>
+      <p class="title" style="margin-top:var(--s3)">{site.titleLine}</p>
+      <p style="margin:0 0 var(--s3)">Donyell Kennedy-McCullough has spent more than fifteen years on the talent side of television. Most recently she was Senior Vice President of Talent Relations and Casting at REVOLT Media &amp; TV, overseeing talent relations and casting for the network’s original programming.</p>
+      <p style="margin:0 0 var(--s3)">Before REVOLT, she spent seven years as Head of Talent and Casting at TV One, setting talent strategy across the network’s scripted and non-scripted series. Earlier, she booked guests and talent for non-scripted productions at BET and for Telepictures’ <em>Just Keke</em>.</p>
+      <p style="margin:0">Today she brings that experience — and a network of talent, managers, and publicists who return her calls — to producers, networks, brands, and creators. She is based in Los Angeles. She is also a published author and photographer, and a board member of Black Girls Film Camp.</p>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="two" style="grid-template-columns:minmax(0,1fr) minmax(0,1.8fr)">
+        <div><p class="eyebrow">Career</p><h2 class="h-display h2">Network experience</h2></div>
+        <ul class="tl">
+          {career.map((c) => (
+            <li>
+              <div class="yr">{c.yr}</div>
+              <div><div class="co">{c.co}</div><div class="role">{c.role}</div></div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand heading="Work with Donyell" />
+</Base>

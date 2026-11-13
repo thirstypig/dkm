@@ -1,0 +1,63 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import CtaBand from '../components/CtaBand.astro';
+import photo from '../assets/photos/03-floral-blazer-portrait.jpg';
+---
+<Base
+  title="Services"
+  description="Fractional talent producing for series, and talent booking for projects, campaigns, and events."
+  current="services"
+>
+  <section class="split" style="min-height:560px">
+    <div class="txt">
+      <p class="eyebrow">Services</p>
+      <h1 class="h-display h1">Two ways to work together</h1>
+      <p class="lede" style="margin-top:var(--s4)">Ongoing talent producing for a series, or focused booking for a single project. Either way, the goal is the same: the right guest, ready to deliver.</p>
+    </div>
+    <div class="img">
+      <Image src={photo} widths={[480, 800, 1179]} sizes="(max-width: 820px) 100vw, 50vw" alt="Donyell Kennedy-McCullough in a floral blazer" style="object-position:center 30%" />
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="two">
+        <div class="svc" id="producing">
+          <div class="num">01</div>
+          <h2>Talent Producing</h2>
+          <p class="eyebrow accent">Fractional · week over week</p>
+          <p>The guest side of a show is continuous work — pipeline, outreach, scheduling, prep — and it rarely justifies a full-time hire on a lean production. Donyell runs it for you as a fractional talent producer, credited as <em>Talent Producer</em>.</p>
+          <p class="label">What you get each week</p>
+          <ul>
+            <li>Weekly guest strategy</li>
+            <li>A forward-looking guest pipeline</li>
+            <li>Tailored pitches to representation</li>
+            <li>Scheduling against your production calendar</li>
+            <li>A prep document for every booked guest</li>
+            <li>A shared booking tracker</li>
+            <li>A weekly status call</li>
+          </ul>
+          <p class="fit">Best for: podcasts, interview shows, recurring and creator-led series.</p>
+        </div>
+        <div class="svc" id="booking">
+          <div class="num">02</div>
+          <h2>Talent Booking</h2>
+          <p class="eyebrow accent">Per project</p>
+          <p>Sourcing, vetting, and booking talent for a defined project, campaign, or event — drawing on direct relationships with talent, managers, and publicists built over a career in network television.</p>
+          <p class="fit">Best for: specials, campaigns, brand activations, festivals, summits, and casting teams that need overflow capacity.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule" />
+  <section class="sec" style="padding-top:var(--s6)">
+    <div class="wrap">
+      <h2 class="eyebrow">Scope</h2>
+      <p style="max-width:40em;margin:0;font-size:17px">Talent fees, travel, and production costs are the client’s. Deal negotiation and talent representation are outside the scope of these services.</p>
+    </div>
+  </section>
+
+  <CtaBand heading="Tell her about your project" />
+</Base>

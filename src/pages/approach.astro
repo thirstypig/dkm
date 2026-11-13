@@ -1,0 +1,69 @@
+---
+import Base from '../layouts/Base.astro';
+import CtaBand from '../components/CtaBand.astro';
+
+const steps = [
+  ['Guest strategy', 'Who the show needs next, and why.'],
+  ['Forward pipeline', 'A running list of targets, weeks ahead of the calendar.'],
+  ['Tailored pitches', 'Outreach written for each guest’s representation, not a form letter.'],
+  ['Scheduling', 'Bookings locked against your production calendar.'],
+  ['Guest prep document', 'One per booked guest, so hosts and producers walk in ready.'],
+  ['Shared tracker', 'Every pitch, hold, and confirmation in one place you can see.'],
+  ['Weekly status call', 'A standing check-in on what’s booked, pending, and next.'],
+];
+---
+<Base
+  title="How She Works"
+  description="Bookings fail in two ways: the audience doesn’t care, or the guest doesn’t deliver. How Donyell prevents both, week over week."
+  current="approach"
+>
+  <div class="wrap ph">
+    <p class="eyebrow">How she works</p>
+    <h1 class="h-display h1">Bookings fail<br />in two ways</h1>
+    <p class="lede">She’s hired to prevent both.</p>
+  </div>
+
+  <div class="wrap">
+    <div class="two" style="gap:var(--s4)">
+      <div class="fail">
+        <div class="big" aria-hidden="true">01</div>
+        <h2>The audience doesn’t care</h2>
+        <p>The guest looks right on paper, but isn’t the person this audience wants to hear from. Most clients can make a reasonable guess here.</p>
+      </div>
+      <div class="fail">
+        <div class="big" aria-hidden="true">02</div>
+        <h2>The guest doesn’t deliver</h2>
+        <p>Almost no one can judge this before the talent is in the room — the guest who arrives unprepared, freezes when the conversation goes off-script, is difficult with the crew, or talks for thirty minutes without saying anything usable.</p>
+      </div>
+    </div>
+  </div>
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="two" style="grid-template-columns:minmax(0,1fr) minmax(0,1.6fr)">
+        <div>
+          <p class="eyebrow">The weekly rhythm</p>
+          <h2 class="h-display h2">What a week looks like</h2>
+          <p style="margin-top:var(--s3)">For talent producing engagements, every week runs on the same seven pieces — so you always know who’s coming, when, and that they’re ready.</p>
+        </div>
+        <ol class="steps">
+          {steps.map(([h, p], i) => (
+            <li>
+              <span class="n" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+              <div><h3>{h}</h3><p>{p}</p></div>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="band-dark">
+    <div class="wrap">
+      <p class="eyebrow">The asset</p>
+      <p class="quote">Her read on who is the best overall fit — for the audience, and for the room.</p>
+    </div>
+  </section>
+
+  <CtaBand heading="Ready to fill the chair?" tone="paper" />
+</Base>

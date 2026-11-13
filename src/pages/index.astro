@@ -1,3 +1,84 @@
 ---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { site } from '../data/site';
+import hero from '../assets/photos/01-ebony-power100.jpg';
 ---
-<h1>DKM</h1>
+<Base
+  title="DKM · Donyell Kennedy-McCullough"
+  description="Talent producing and booking for shows, brands, and stages that need the right Black talent — and need that talent to deliver."
+  current="home"
+>
+  <section class="split">
+    <div class="txt">
+      <p class="mega" aria-hidden="true">DKM</p>
+      <h1 class="name">{site.name}</h1>
+      <p class="title">{site.titleLine}</p>
+      <p class="lede" style="margin:0">Talent producing and booking for shows, brands, and stages that need the right Black talent — and need that talent to deliver.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="/contact/">Start an inquiry</a>
+        <a class="link" href="/services/">See services →</a>
+      </div>
+    </div>
+    <div class="img">
+      <Image src={hero} widths={[480, 800, 1025]} sizes="(max-width: 820px) 100vw, 50vw" alt="Donyell Kennedy-McCullough at the Ebony Power 100 celebration" style="object-position:center 20%" loading="eager" fetchpriority="high" />
+    </div>
+  </section>
+
+  <section class="band-dark">
+    <div class="wrap">
+      <p class="eyebrow">The pitch</p>
+      <blockquote style="margin:0">
+        <p class="quote">“Bookings fail in two ways. Either the audience doesn’t care, or the guest doesn’t deliver. I’m hired to prevent both.”</p>
+        <footer class="quote-by">— {site.name}</footer>
+      </blockquote>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <h2 class="eyebrow">Services</h2>
+      <div class="two">
+        <div class="svc">
+          <div class="num">01</div>
+          <h3>Talent Producing</h3>
+          <p>Your fractional talent producer. She runs the guest side of your series week over week — strategy, pipeline, pitches, scheduling, and prep — credited as Talent Producer.</p>
+          <a class="link" href="/services/#producing">Talent producing →</a>
+        </div>
+        <div class="svc">
+          <div class="num">02</div>
+          <h3>Talent Booking</h3>
+          <p>Sourcing, vetting, and booking the right talent for a defined project, campaign, or event.</p>
+          <a class="link" href="/services/#booking">Talent booking →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule" />
+  <div class="wrap">
+    <ul class="strip" aria-label="Previously at">
+      <li class="lbl" aria-hidden="true">Previously</li>
+      <li>REVOLT</li>
+      <li>TV One</li>
+      <li>BET</li>
+      <li>Telepictures</li>
+    </ul>
+  </div>
+  <hr class="rule" />
+
+  <section class="sec">
+    <div class="wrap">
+      <h2 class="eyebrow">Who she works with</h2>
+      <div class="four">
+        <div class="who"><h3 class="h3">Black-audience media &amp; brands</h3><p>Black-owned and Black-targeted companies, faith and gospel media, festivals, summits, and conventions.</p></div>
+        <div class="who"><h3 class="h3">General market</h3><p>Networks, brands, agencies, and production companies casting Black talent for a project or representation need.</p></div>
+        <div class="who"><h3 class="h3">Creator-led series</h3><p>Podcasts, interview shows, YouTube and subscription series with a regular guest slot to fill.</p></div>
+        <div class="who"><h3 class="h3">Casting shops</h3><p>Overflow capacity when your team is at its limit.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand heading="Have a guest slot to fill?" />
+</Base>
