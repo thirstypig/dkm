@@ -66,6 +66,12 @@ describe('Contact page', () => {
     expect(html).not.toContain('mailto:');
   });
 
+  it('is connected to the DKM Formspree form', async () => {
+    const html = await container.renderToString(Contact);
+    expect(html).toContain('action="https://formspree.io/f/mrpqboyz"');
+    expect(html).not.toContain('isn’t connected yet');
+  });
+
   it('decorative selfie is hidden from screen readers', async () => {
     const html = await container.renderToString(Contact);
     for (const img of html.match(/<img[^>]*>/g) ?? []) {
