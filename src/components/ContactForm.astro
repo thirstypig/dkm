@@ -14,9 +14,6 @@ const action = connected ? `https://formspree.io/f/${formspreeId.trim()}` : unde
   id="inquiry-form"
   action={action}
   method="POST"
-  data-msg-sending="Sending…"
-  data-msg-success="Thank you — your inquiry is on its way. Donyell will reply personally."
-  data-msg-error="Something went wrong. Please try again in a moment."
 >
   <!-- Honeypot. The name MUST be `_gotcha` (Formspree drops on it). The label
        must not name a field any autofill profile knows: "Company" here got
@@ -66,51 +63,10 @@ const action = connected ? `https://formspree.io/f/${formspreeId.trim()}` : unde
 </form>
 
 <script>
+  import { initInquiryForm } from '../scripts/inquiry-form';
   const form = document.getElementById('inquiry-form');
-  if (form instanceof HTMLFormElement && form.action.startsWith('https://formspree.io/f/')) {
-    const button = form.querySelector('button[type="submit"]');
-    const status = form.querySelector('.form-status');
-    const msgSending = form.dataset.msgSending ?? '';
-    const msgSuccess = form.dataset.msgSuccess ?? '';
-    const msgError = form.dataset.msgError ?? '';
-    if (button instanceof HTMLButtonElement && status instanceof HTMLElement) {
-      const label = button.textContent ?? '';
-      form.addEventListener('submit', async (event) => {
-        event.preventDefault();
-        const data = new FormData(form);
-        status.classList.remove('form-status--error');
-
-        // Honeypot filled => a bot. Report success and send nothing.
-        if (String(data.get('_gotcha') ?? '').trim() !== '') {
-          form.reset();
-          status.textContent = msgSuccess;
-          return;
-        }
-
-        button.disabled = true;
-        button.textContent = msgSending;
-        status.textContent = '';
-        try {
-          const response = await fetch(form.action, {
-            method: 'POST',
-            body: data,
-            headers: { Accept: 'application/json' },
-          });
-          if (response.ok) {
-            form.reset();
-            status.textContent = msgSuccess;
-          } else {
-            status.textContent = msgError;
-            status.classList.add('form-status--error');
-          }
-        } catch {
-          status.textContent = msgError;
-          status.classList.add('form-status--error');
-        } finally {
-          button.disabled = false;
-          button.textContent = label;
-        }
-      });
-    }
+  // No action attribute = not connected yet; leave the disabled form alone.
+  if (form instanceof HTMLFormElement && form.getAttribute('action')?.startsWith('https://formspree.io/f/')) {
+    initInquiryForm(form);
   }
 </script>

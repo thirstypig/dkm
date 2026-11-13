@@ -52,15 +52,10 @@ describe('ContactForm', () => {
     expect(html).toMatch(/name="_subject"[^>]*value="New DKM inquiry"|value="New DKM inquiry"[^>]*name="_subject"/);
   });
 
-  it('keeps input and shows error on failed submit', () => {
-    expect(script).toMatch(/fetch\(form\.action/);
-    expect(script).toMatch(/Accept:\s*'application\/json'/);
-    // reset() only after a successful response — a failed send must keep the message.
-    const okBranch = script.slice(script.indexOf('if (response.ok)'), script.indexOf('} else {', script.indexOf('if (response.ok)')));
-    expect(okBranch).toContain('form.reset()');
-    expect(script.match(/form\.reset\(\)/g)?.length).toBe(2); // ok branch + honeypot branch
-    const catchBranch = script.slice(script.indexOf('} catch'));
-    expect(catchBranch).toMatch(/msgError/);
+  it('wires the tested submit handler only when connected', () => {
+    // Behavior (keep input on failure, error shown) is exercised in behavior.test.ts.
+    expect(script).toContain("import { initInquiryForm } from '../scripts/inquiry-form'");
+    expect(script).toMatch(/startsWith\('https:\/\/formspree\.io\/f\/'\)/);
   });
 });
 

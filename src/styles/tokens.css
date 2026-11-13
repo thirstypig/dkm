@@ -5,7 +5,7 @@
   --stone: #F1EEE6;
   --ink: #111111;
   --text: #3B3B3B;
-  --muted: #8A8780;
+  --muted: #6F6C65; /* darkened from review #8A8780 (3.4:1) to pass WCAG AA 4.5:1 */
   --rule: #E4E0D6;
   --accent: #7A2E22;
   --accent-hover: #5F231A;

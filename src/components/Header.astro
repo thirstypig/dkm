@@ -21,22 +21,8 @@ const { current } = Astro.props;
 <hr class="rule" />
 
 <script>
-  // Mobile disclosure menu. On desktop the nav is always visible (CSS), so the
-  // button is hidden and this only matters ≤820px.
+  import { initMenu } from '../scripts/menu';
   const button = document.querySelector<HTMLButtonElement>('.burger');
   const nav = document.getElementById('site-nav');
-  if (button && nav) {
-    const set = (open: boolean) => {
-      button.setAttribute('aria-expanded', String(open));
-      button.textContent = open ? 'Close' : 'Menu';
-      nav.classList.toggle('nav--open', open);
-    };
-    button.addEventListener('click', () => set(button.getAttribute('aria-expanded') !== 'true'));
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && button.getAttribute('aria-expanded') === 'true') {
-        set(false);
-        button.focus();
-      }
-    });
-  }
+  if (button && nav) initMenu(button, nav);
 </script>
