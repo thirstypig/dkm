@@ -1,0 +1,32 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import ContactForm from '../components/ContactForm.astro';
+import { site } from '../data/site';
+import accent from '../assets/photos/04-selfie-striped-scarf.jpg';
+---
+<Base
+  title="Contact"
+  description="Start an inquiry with Donyell Kennedy-McCullough about talent producing or booking."
+  current="contact"
+>
+  <div class="wrap ph" style="padding-bottom:var(--s5)">
+    <p class="eyebrow">Contact</p>
+    <h1 class="h-display h1">Start an inquiry</h1>
+    <p class="lede">Tell her about the show, project, or event — who you’re trying to reach and when. She’ll reply personally.</p>
+  </div>
+  <div class="wrap" style="padding-bottom:var(--s7)">
+    <div class="two" style="grid-template-columns:minmax(0,1.4fr) minmax(0,1fr)">
+      <ContactForm />
+      <div>
+        <h2 class="eyebrow">Elsewhere</h2>
+        <ul class="socials">
+          {site.socials.map((s) => (
+            <li><a href={s.href} target="_blank" rel="me noopener">{s.label} <small>{s.handle}</small></a></li>
+          ))}
+        </ul>
+        <Image src={accent} widths={[400, 700]} sizes="(max-width: 820px) 100vw, 40vw" alt="" role="presentation" class="contact-accent" />
+      </div>
+    </div>
+  </div>
+</Base>
