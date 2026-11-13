@@ -1,0 +1,31 @@
+name: CI
+
+# Every pull request and non-main branch push. main is gated by deploy.yml's
+# own test step.
+on:
+  pull_request:
+  push:
+    branches-ignore: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Unit tests
+        run: npm run test
+      - name: Typecheck
+        run: npm run typecheck
+      - name: Build
+        run: npm run build
+      # tests/dist.test.ts skips without dist/, so run the suite again now that
+      # the site is built: noindex on every page, robots disallow, no pricing.
+      - name: Re-run the suite against the built site
+        run: npm run test
