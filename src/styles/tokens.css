@@ -1,0 +1,24 @@
+/* DKM design tokens — values fixed by review/index.html and the spec. */
+:root {
+  --paper: #FAF8F3;
+  --paper-dark: #141312;
+  --stone: #F1EEE6;
+  --ink: #111111;
+  --text: #3B3B3B;
+  --muted: #8A8780;
+  --rule: #E4E0D6;
+  --accent: #7A2E22;
+  --accent-hover: #5F231A;
+  --accent-ink: #FFFFFF;
+
+  --font-display: "Bebas Neue", "Arial Narrow", sans-serif;
+  --font-ui: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Newsreader", Georgia, serif;
+
+  --track-ui: .14em;
+  --track-display: .04em;
+
+  --s1: 4px; --s2: 8px; --s3: 16px; --s4: 24px; --s5: 40px; --s6: 64px; --s7: 96px; --s8: 144px;
+  --max: 1200px;
+  --radius: 2px;
+}

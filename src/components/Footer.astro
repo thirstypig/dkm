@@ -1,0 +1,13 @@
+---
+import { site } from '../data/site';
+const year = new Date().getFullYear();
+---
+<footer class="ftr">
+  <span><a class="logo" href="/">DKM</a>{site.name} · {site.location}</span>
+  <ul class="so">
+    {site.socials.map((s) => (
+      <li><a href={s.href} target="_blank" rel="me noopener">{s.label}</a></li>
+    ))}
+  </ul>
+  <span>© {year}</span>
+</footer>

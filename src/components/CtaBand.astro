@@ -1,0 +1,11 @@
+---
+interface Props {
+  heading: string;
+  tone?: 'paper' | 'stone';
+}
+const { heading, tone = 'stone' } = Astro.props;
+---
+<section class:list={['cta-band', { 'cta-band--stone': tone === 'stone' }]}>
+  <h2 class="h-display h2">{heading}</h2>
+  <a class="btn btn-primary" href="/contact/">Start an inquiry</a>
+</section>
