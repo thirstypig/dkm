@@ -236,6 +236,7 @@ html.vr-placing #vr-panel,html.vr-placing #vr-panel *,html.vr-placing #vr-hint,h
       pop.remove();
       pop = null;
       layer.querySelectorAll(".vr-draft").forEach(n => n.remove());
+      restorePanel();
     }
     function placePop(node, xPct, yPct) {
       closePop();
@@ -314,8 +315,18 @@ html.vr-placing #vr-panel,html.vr-placing #vr-panel *,html.vr-placing #vr-hint,h
       stopPlacing();
       openComposer(x, y);
     }
+    // Pin mode hides the panel (full width on phones, so otherwise there is
+    // nothing left to tap) and brings it back once the pin is saved or cancelled.
+    let reopenPanel = false;
+    function restorePanel() {
+      if (!reopenPanel) return;
+      reopenPanel = false;
+      panel.hidden = false;
+    }
     function startPlacing() {
       closePop();
+      reopenPanel = !panel.hidden;
+      panel.hidden = true;
       placing = true;
       document.documentElement.classList.add("vr-placing");
       hint.hidden = false;
@@ -328,10 +339,11 @@ html.vr-placing #vr-panel,html.vr-placing #vr-panel *,html.vr-placing #vr-hint,h
       document.removeEventListener("click", onPlaceClick, true);
     }
     pinBtn.addEventListener("click", startPlacing);
-    hint.querySelector("button").addEventListener("click", () => { stopPlacing(); pinBtn.focus(); });
+    const cancelPlacing = () => { stopPlacing(); restorePanel(); if (!panel.hidden) pinBtn.focus(); };
+    hint.querySelector("button").addEventListener("click", cancelPlacing);
     document.addEventListener("keydown", e => {
       if (e.key !== "Escape") return;
-      if (placing) { stopPlacing(); pinBtn.focus(); }
+      if (placing) cancelPlacing();
       else if (pop) closePop();
     });
 

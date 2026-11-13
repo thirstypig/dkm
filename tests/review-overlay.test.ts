@@ -132,6 +132,25 @@ describe('overlay', () => {
     expect(document.documentElement.classList.contains('vr-placing')).toBe(false);
   });
 
+  it('pin mode moves the panel out of the way, then brings it back', async () => {
+    // On a phone the panel is full width; left open, there is nowhere to tap.
+    await mount();
+    const panel = document.querySelector<HTMLElement>('#vr-panel')!;
+    const pinBtn = () => [...document.querySelectorAll<HTMLButtonElement>('#vr-panel button')].find((b) => b.textContent === 'Pin on page')!;
+    document.querySelector<HTMLButtonElement>('#vr-tab')!.click();
+
+    pinBtn().click();
+    expect(panel.hidden).toBe(true);
+    document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
+    expect(panel.hidden).toBe(false);
+
+    pinBtn().click();
+    document.querySelector('#link')!.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true }));
+    expect(panel.hidden).toBe(true);
+    [...document.querySelectorAll<HTMLButtonElement>('.vr-pop button')].find((b) => b.textContent === 'Cancel')!.click();
+    expect(panel.hidden).toBe(false);
+  });
+
   it('waits for the gate before mounting', async () => {
     document.documentElement.classList.add('vr-locked');
     await mount();
