@@ -1,5 +1,6 @@
 ---
 import { site, type NavKey } from '../data/site';
+import Logo from './Logo.astro';
 
 interface Props {
   current?: NavKey;
@@ -7,7 +8,7 @@ interface Props {
 const { current } = Astro.props;
 ---
 <header class="hdr">
-  <a class="logo" href="/">DKM</a>
+  <a class="logo" href="/" aria-label="DKM — home"><Logo class="logo-mark" /></a>
   <button class="burger" type="button" aria-controls="site-nav" aria-expanded="false">Menu</button>
   <nav class="nav" id="site-nav" aria-label="Main">
     {site.nav.map((item) => (

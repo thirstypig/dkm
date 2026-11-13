@@ -29,6 +29,12 @@ describe('Home', () => {
     );
   });
 
+  it('hero uses the monogram, not typed letters', () => {
+    const hero = html.home.match(/<section class="split"[\s\S]*?<\/section>/)![0];
+    expect(hero).toMatch(/<svg[^>]*class="[^"]*mega-logo/);
+    expect(hero).not.toMatch(/class="mega"/);
+  });
+
   it('shows the title line', () => {
     expect(text(html.home)).toContain(site.titleLine);
   });

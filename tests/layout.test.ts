@@ -20,9 +20,17 @@ describe('Base layout', () => {
     expect(html).toContain('<meta name="description" content="D">');
   });
 
-  it('header logo is DKM linking home', async () => {
+  it('header logo is the DKM monogram linking home', async () => {
     const html = await container.renderToString(Base, { props: { title: 'T', description: 'D' } });
-    expect(html).toMatch(/<a[^>]*href="\/"[^>]*>\s*DKM\s*<\/a>/);
+    const header = html.match(/<header[\s\S]*?<\/header>/)![0];
+    const link = header.match(/<a[^>]*href="\/"[^>]*>([\s\S]*?)<\/a>/)!;
+    expect(link[1]).toMatch(/<svg[^>]*viewBox="0 0 356 140"/);
+    expect(link[0]).toMatch(/aria-label="DKM — home"/);
+  });
+
+  it('uses the DKM avatar as favicon', async () => {
+    const html = await container.renderToString(Base, { props: { title: 'T', description: 'D' } });
+    expect(html).toContain('<link rel="icon" href="/favicon.svg" type="image/svg+xml">');
   });
 
   it('marks the current nav item', async () => {

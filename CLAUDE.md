@@ -9,8 +9,8 @@ business. Built by James on her behalf; **she approves all copy and photos.**
 
 ## Stack
 Astro 7 static · Vitest · fonts self-hosted via `@fontsource` · GitHub Pages
-(`thirstypig/dkm`) · Formspree contact form · DNS: Google Cloud DNS
-(`pasadenaworks.com` zone, `dkm` CNAME → `thirstypig.github.io`).
+(`thirstypig/dkm`) · Formspree contact form · DNS: Squarespace
+Domains (`pasadenaworks.com`; `dkm` CNAME → `thirstypig.github.io`).
 
 ## Commands
 `npm run dev` / `npm run preview` (port **3200**, strict — see

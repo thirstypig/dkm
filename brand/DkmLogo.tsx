@@ -1,0 +1,33 @@
+import * as React from "react";
+
+/**
+ * DKM monogram — Anton, tall 4:5 blocks. Letters are outlined paths (no font needed).
+ * variant "knockout" (default): letters are transparent holes; color via `color`/CSS currentColor.
+ * variant "solid": blocks in `color`, letters filled with `letterColor`.
+ */
+type Props = React.SVGProps<SVGSVGElement> & {
+  variant?: "knockout" | "solid";
+  letterColor?: string;
+  title?: string;
+};
+
+const BLOCKS = "M0 0H112V140H0ZM122 0H234V140H122ZM244 0H356V140H244Z";
+const LETTERS = "M30.21 122.42V17.58H59.04Q70.36 17.58 76.08 23.86Q81.79 30.15 81.79 42.24V91.33Q81.79 106.22 76.58 114.32Q71.37 122.42 58.32 122.42ZM51.29 103.9H54.93Q60.71 103.9 60.71 98.3V44.21Q60.71 38.96 59.31 37.44Q57.91 35.93 53.62 35.93H51.29ZM150.98 122.42V17.58H171.72V59.58L181.48 17.58H202.57L190.84 65.59L205.02 122.42H183.27L171.83 71.67V122.42ZM259.13 122.42V17.58H291.06L299.88 81.5L308.64 17.58H340.87V122.42H321.68V46.89L309.65 122.42H290.83L278.08 46.89V122.42Z";
+const KNOCKOUT = "M0 0H112V140H0ZM30.21 122.42V17.58H59.04Q70.36 17.58 76.08 23.86Q81.79 30.15 81.79 42.24V91.33Q81.79 106.22 76.58 114.32Q71.37 122.42 58.32 122.42ZM51.29 103.9H54.93Q60.71 103.9 60.71 98.3V44.21Q60.71 38.96 59.31 37.44Q57.91 35.93 53.62 35.93H51.29ZM122 0H234V140H122ZM150.98 122.42V17.58H171.72V59.58L181.48 17.58H202.57L190.84 65.59L205.02 122.42H183.27L171.83 71.67V122.42ZM244 0H356V140H244ZM259.13 122.42V17.58H291.06L299.88 81.5L308.64 17.58H340.87V122.42H321.68V46.89L309.65 122.42H290.83L278.08 46.89V122.42Z";
+
+export function DkmLogo({ variant = "knockout", letterColor = "#FFFFFF", title = "DKM", ...props }: Props) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 356 140" role="img" aria-label={title} {...props}>
+      {variant === "solid" ? (
+        <>
+          <path fill="currentColor" d={BLOCKS} />
+          <path fill={letterColor} d={LETTERS} />
+        </>
+      ) : (
+        <path fill="currentColor" fillRule="evenodd" d={KNOCKOUT} />
+      )}
+    </svg>
+  );
+}
+
+export default DkmLogo;

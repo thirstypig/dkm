@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import CtaBand from '../components/CtaBand.astro';
+import Logo from '../components/Logo.astro';
 import { site } from '../data/site';
 import hero from '../assets/photos/01-ebony-power100.jpg';
 ---
@@ -12,7 +13,7 @@ import hero from '../assets/photos/01-ebony-power100.jpg';
 >
   <section class="split">
     <div class="txt">
-      <p class="mega" aria-hidden="true">DKM</p>
+      <Logo class="mega-logo" />
       <h1 class="name">{site.name}</h1>
       <p class="title">{site.titleLine}</p>
       <p class="lede" style="margin:0">Talent producing and booking for shows, brands, and stages that need the right Black talent — and need that talent to deliver.</p>

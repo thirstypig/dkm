@@ -46,7 +46,7 @@ Every project keeps a byte-identical copy of this file at its root (e.g., `~/Pro
 | **minmeychang**                       | 3170     | —    | —         | —          | —     | —     | Astro 7 static, bilingual en/zh-hant; GitHub Pages at minmeychang.com (apex, Squarespace DNS) |
 | **pasadenaworks**                     | 3180     | —    | —         | —          | —     | —     | Astro marketing site for Pasadena Works (consultancy); `npm run dev`/`npm run preview` pinned to `-p 3180`; static, GitHub Pages at pasadenaworks.com; repo also carries a `registry/` folder (this file's original canonical home) left over from before the repo was repurposed — see 2026-08-27 changelog entry |
 | **property-page**                     | 3190     | —    | —         | —          | —     | —     | Astro static, English only, private property listing; password-gated at the edge by a Cloudflare Pages Functions Worker (KV-backed passwords); Cloudflare Pages, NOT GitHub Pages; `wrangler pages dev` preview on 3191 |
-| **dkm**                               | 3200     | —    | —         | —          | —     | —     | Astro 7 static; GitHub Pages at dkm.pasadenaworks.com (Google Cloud DNS); `npm run dev`/`preview` pinned to 3200; noindex until client approves |
+| **dkm**                               | 3200     | —    | —         | —          | —     | —     | Astro 7 static; GitHub Pages at dkm.pasadenaworks.com (Squarespace DNS); `npm run dev`/`preview` pinned to 3200; noindex until client approves |
 
 ---
 

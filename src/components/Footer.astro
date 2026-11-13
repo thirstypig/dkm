@@ -1,9 +1,10 @@
 ---
 import { site } from '../data/site';
+import Logo from './Logo.astro';
 const year = new Date().getFullYear();
 ---
 <footer class="ftr">
-  <span><a class="logo" href="/">DKM</a>{site.name} · {site.location}</span>
+  <span class="ftr-id"><a class="logo" href="/" aria-label="DKM — home"><Logo class="logo-mark" /></a>{site.name} · {site.location}</span>
   <ul class="so">
     {site.socials.map((s) => (
       <li><a href={s.href} target="_blank" rel="me noopener">{s.label}</a></li>

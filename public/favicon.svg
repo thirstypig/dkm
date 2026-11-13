@@ -1,1 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" fill="#111111"/><text x="32" y="45" text-anchor="middle" font-family="'Bebas Neue','Arial Narrow',Impact,sans-serif" font-size="34" letter-spacing="0.5" fill="#FAF8F3">DKM</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-labelledby="t">
+<title id="t">DKM</title>
+<circle cx="256" cy="256" r="256" fill="#141414"/>
+<path fill="#F2EEE6" fill-rule="evenodd" d="M86 189.15H192.97V322.85H86ZM114.85 306.07V205.93H142.38Q153.19 205.93 158.66 211.94Q164.12 217.94 164.12 229.49V276.37Q164.12 290.59 159.14 298.33Q154.16 306.07 141.7 306.07ZM134.99 288.37H138.46Q143.98 288.37 143.98 283.02V231.37Q143.98 226.36 142.64 224.91Q141.3 223.46 137.21 223.46H134.99ZM202.52 189.15H309.48V322.85H202.52ZM230.2 306.07V205.93H250V246.04L259.33 205.93H279.47L268.26 251.79L281.8 306.07H261.04L250.11 257.59V306.07ZM319.03 189.15H426V322.85H319.03ZM333.49 306.07V205.93H363.98L372.4 266.98L380.77 205.93H411.55V306.07H393.23V233.93L381.73 306.07H363.76L351.58 233.93V306.07Z"/>
+</svg>

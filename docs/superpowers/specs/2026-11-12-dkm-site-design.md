@@ -40,7 +40,7 @@ Source of truth for the business: `~/Downloads/2026-Sept Donyell Casting -- Seco
 ## 3. Constraints
 
 - Static site on GitHub Pages, matching the owner's sibling sites (`pasadenaworks`, `minmeychang`): **Astro 7**, GitHub Actions deploy, fonts self-hosted via `@fontsource`.
-- DNS for `pasadenaworks.com` is Google Cloud DNS; `www` already CNAMEs to `thirstypig.github.io`. Add `dkm` CNAME → `thirstypig.github.io` and a `CNAME` file in the repo.
+- DNS for `pasadenaworks.com` is managed in Squarespace Domains (Google-Domains-era nameservers, not Cloud DNS); `www` already CNAMEs to `thirstypig.github.io`. Add `dkm` CNAME → `thirstypig.github.io` and a `CNAME` file in the repo.
 - Contact form via **Formspree** (same pattern as `pasadenaworks/src/data/site.ts`). No backend.
 - Photos: five Instagram images, 1025–1440 px wide, all portrait orientation (`review/img/`). Layouts must favor portrait crops; no full-bleed landscape heroes.
 - Copy in American English.
